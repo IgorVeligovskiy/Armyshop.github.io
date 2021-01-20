@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Армейский магазин</title>
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header>
+        <div class="top">
+            <nav class="nav">
+                <div class="container">
+                    <ul class="nav-list">
+                        <li>
+                            <a href="#tags_id" class="nav-link">О нас</a>
+                        </li>
+                        <li>
+                            <p class="question">Возникли вопросы? Напишите нам:</p>
+                        </li>
+                        <li>
+                            <a href="https://vk.com/public201459406" target="_blank"><img src="img/vk.svg" alt="Вконтакте"></a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/+79138045766" target="_blank"><img src="img/WhatsApp.svg" alt="WhatsApp"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/veligovskii/?hl=ru" target="_blank"><img src="img/Instagram.svg" alt="Instagram"></a>
+                        </li>
+                        <li>
+                            <a href="https://telegram.me/veligovskiy" target="_blank"><img src="img/Telegram.svg" alt="Telegram"></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="middle">
+            <h1>Армейский магазин</h1>
+        </div>
+        <div class="second-head">
+            <div class="container">
+                <div class="nav-bot">
+                    <div class="buttons">
+                        <button class="button"><a href="#aks_id">Аксессуары</a></button>
+                        <button class="button"><a href="#hats_id">Головные уборы</a></button>
+                        <button class="button"><a href="#clothes_id">Одежда</a></button>
+                        <button class="button"><a href="#food_id">Продукты питания</a></button>
+                        <button class="button"><a href="#back_id">Рюкзаки</a></button>
+                    </div>
+                    <div class="button-2">
+                        <p class="button-2-text">Моя корзина:<div id="result"></div></p>
+                        <button class="but"><div class="text-but">Оплатить и указать адрес доставки</div> </button>
+                    </div>
+                    <div class="input-class">
+                        <form>
+                        <input type="search" placeholder="Поиск товара...">
+                        <input type="submit" value=" ">
+                        <img class="search-svg" src="img/search.svg" alt="Поиск">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+        <div class="razdel-hits">
+            <h2 class="bestseller-h2">Хиты продаж</h2>
+        </div>
+            <div class="container">
+                <!-- <div id="swipezone" > -->
+                <ul class="best-list">
+                    <li class="nav-item">
+                        <img class="" src="img/1.jpg" alt="Термобелье DRY Warm до -35">
+                        <p class="nav-link">Термобелье DRY Warm до -35</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>1 800 ₽</button>
+                            </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2.jpg" alt="Берцы облегченные">
+                        <p class="nav-link">Берцы облегченные</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>4 000 ₽</button>
+                            </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3.jpg" alt="Паек Россгвардии">
+                        <p class="nav-link">Паек Россгвардии</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                                <button class="buy-but">Купить сейчас<br>550 ₽</button>
+                            </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4.jpg" alt="Рюкзак комбо, 40 литров">
+                        <p class="nav-link">Рюкзак комбо, 40 литров</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>2 900 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/5.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо Оленя">
+                        <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>220 ₽</button>
+                        </form>
+                    </li>
+                </ul>
+            <!-- </div> -->
+            </div>
+        <!-- About-us -->
+        <div class="about-us" id="tags_id">
+            <div class="razdel">
+                <h2 class="about-us-h2">О нас</h2>
+            </div>
+            <div class="container">
+                <p class="about-us-text" >Наш интернет-магазин специализируется на торговле армейской продукции хорошего качества и по доступной цене.
+    Тысячи довольных клиентов на местности.<br>
+    В наличии: продукты питания, одежда, различные аксессуары, а также продукция для дачи, отдыха за городом, туризма.
+    Продукты питания подходят для рыбаков, охотников, кто часто отправляется в командировки ,очень удобно взять с собой в дорогу, а также для тех, кто просто желает разнообразить свой рацион и обогатить организм полезными элементами, всё натуральное или, как подарок на праздники родным, друзьям, знакомым. Всё очень вкусно и питательно😀
+    Отправляем в регионы России транспортными компаниями, почтой! Находимся в Нижневартовске! <br>Есть предложения и готовы сотрудничать с оптовиками. 
+    Все контакты находятся в шапке сайта. Мы всегда открыты.</p>
+            </div>
+        </div>
+        <!-- aks -->
+        <div class="accessories" id="aks_id">
+            <div class="razdel">
+                <h2 class="accessories-h2">Аксессуары</h2>
+            </div>
+            <div class="container">
+                <ul class="acc-list">   
+                    <li class="nav-item">
+                        <img class="" src="img/1a.jpg" alt="Ремень кожаный офицерский латунь">
+                        <p class="nav-link">Ремень кожаный офицерский латунь</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>800 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2a.jpg" alt="Армейская саперная лопата с чехлом">
+                        <p class="nav-link">Армейская саперная лопата с чехлом</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>650 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3a.jpg" alt="Перчатки двойные вязаные">
+                        <p class="nav-link">Перчатки двойные вязаные</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>450 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4a.jpg" alt="Антисептик армейский ИПГП">
+                        <p class="nav-link">Антисептик армейский ИПГП</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>150 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/5a.jpg" alt="Газовая турбо зажигалка &#171Ак-47&#187">
+                        <p class="nav-link">Газовая турбо зажигалка "Ак-47"</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>300 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/6a.jpg" alt="Компас жидкостный, 4 см">
+                        <p class="nav-link">Компас жидкостный, 4 см</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>80 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/7a.jpg" alt="Компас алюминиевый">
+                        <p class="nav-link">Компас алюминиевый</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>80 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/8a.jpg" alt="Хозпакет">
+                        <p class="nav-link">Хозпакет</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>120 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/9a.jpg" alt="Носки армейские зима/лето">
+                        <p class="nav-link">Носки армейские зима/лето</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>60 ₽</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- hats -->
+        <div class="hats" id="hats_id">
+            <div class="razdel">
+                <h2 class="hats-h2">Головные уборы</h2>
+            </div>
+            <div class="container">
+                <ul class="hats-list">
+                    <li class="nav-item">
+                        <img class="" src="img/1b.jpg" alt="Шапка ФЛОРА на флисе одинарной вязки">
+                        <p class="nav-link">Шапка ФЛОРА на флисе одинарной вязки</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>400 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2b.jpg" alt="Шапка-маска вязаная зимняя черная/олива">
+                        <p class="nav-link">Шапка-маска вязаная зимняя черная/олива</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>650 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3b.jpg" alt="Шапка ЧЕРНАЯ на флисе одинарной вязки">
+                        <p class="nav-link">Шапка ЧЕРНАЯ на флисе одинарной вязки</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>400 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4b.jpg" alt="Шапка ОЛИВА на флисе одинарной вязки">
+                        <p class="nav-link">Шапка ОЛИВА на флисе одинарной вязки</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>400 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/5b.jpg" alt="Шапка ЦИФРА на флисе одинарной вязки">
+                        <p class="nav-link">Шапка ЦИФРА на флисе одинарной вязки</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>400 ₽</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- clothes -->
+        <div class="clothes" id="clothes_id">
+            <div class="razdel">
+                <h2 class="clothes-h2">Одежда</h2>
+            </div>
+            <div class="container">
+                <ul class="clothes-list">
+                    <li class="nav-item">
+                        <img class="" src="img/1c.jpg" alt="Термобелье DRY Warm до -35">
+                        <p class="nav-link">Термобелье DRY Warm до -35</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>1 800 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2c.jpg" alt="Футболка с длинными рукавами Армия России">
+                        <p class="nav-link">Футболка с длинными рукавами Армия России</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>300 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3c.jpg" alt="Армейская парка ВКБО офисная">
+                        <p class="nav-link">Армейская парка ВКБО офисная</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>3 800 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4c.jpg" alt="Берцы облегченные">
+                        <p class="nav-link">Берцы облегченные</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>4 000 ₽</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- food -->
+        <div class="food" id="food_id">
+            <div class="razdel">
+                <h2 class="food-h2">Продукты питания</h2>
+            </div>
+            <div class="container">
+                <ul class="food-list">   
+                    <li class="nav-item">
+                        <img class="" src="img/1f.jpg" alt="Паек Россгвардии">
+                        <p class="nav-link">Паек Россгвардии</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>550 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2f.jpg" alt="Аварийный рацион питания (АРП)">
+                        <p class="nav-link">Аварийный рацион питания (АРП)</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>170 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3f.jpg" alt="Паек офицерский усиленный 2,1 кг">
+                        <p class="nav-link">Паек офицерский усиленный 2,1 кг</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>450 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4f.jpg" alt="МЧС паек">
+                        <p class="nav-link">МЧС паек</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>550 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/5f.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо барана">
+                        <p class="nav-link">Тушенка "Балтийская охота" Мясо барана</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>200 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/6f.jpg" alt="Мясо КАБАНА &#171Балтийская охота&#187">
+                        <p class="nav-link">Мясо КАБАНА "Балтийская охота"</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>200 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/7f.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо косули">
+                        <p class="nav-link">Тушенка "Балтийская охота" Мясо косули</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>230 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/8f.jpg" alt="Тушенка армейская &#171Не для продажи&#187">
+                        <p class="nav-link">Тушенка армейская "Не для продажи"</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>220 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/9f.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо Оленя">
+                        <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>220 ₽</button>
+                        </form>
+                        <li class="nav-item">
+                            <img class="" src="img/10f.jpg" alt="Мясо индейки">
+                            <p class="nav-link">Мясо индейки</p>
+                            <div class="basket">
+                                <p class="plus">+</p>
+                                <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                            </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                                <button class="buy-but">Купить сейчас<br>200 ₽</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <img class="" src="img/11f.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо УТОК">
+                            <p class="nav-link">Тушенка "Балтийская охота" Мясо УТОК</p>
+                            <div class="basket">
+                                <p class="plus">+</p>
+                                <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                            </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                                <button class="buy-but">Купить сейчас<br>200 ₽</button>
+                            </form>
+                        </li>
+                        <li class="nav-item">
+                            <img class="" src="img/12f.jpg" alt="Тушенка &#171Балтийская охота&#187 Мясо ЛОСЯ">
+                            <p class="nav-link">Тушенка "Балтийская охота" Мясо ЛОСЯ</p>
+                            <div class="basket">
+                                <p class="plus">+</p>
+                                <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                            </div>
+                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                                <button class="buy-but">Купить сейчас<br>230 ₽</button>
+                            </form>
+                        </li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- backpacks -->
+        <div class="backpacks" id="back_id">
+            <div class="razdel">
+                <h2 class="bestseller-h2">Рюкзаки</h2>
+            </div>
+            <div class="container">
+                <ul class="back-list">
+                    <li class="nav-item">
+                        <img class="" src="img/1r.jpg" alt="Рюкзак комбо, 30 литров">
+                        <p class="nav-link">Рюкзак комбо, 30 литров</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>2 100 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/2r.jpg" alt="Рюкзак комбо, 40 литров">
+                        <p class="nav-link">Рюкзак комбо, 40 литров</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>2 900 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/3r.jpg" alt="ТАКТИЧЕСКИЙ РЮКЗАК ASSAULT &#171S&#187, 25 литров">
+                        <p class="nav-link">Тактический рюкзак ASSAULT "S", 25литров</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>1 600 ₽</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <img class="" src="img/4r.jpg" alt="Рюкзак 85 литров">
+                        <p class="nav-link">Рюкзак 85 литров</p>
+                        <div class="basket">
+                            <p class="plus">+</p>
+                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
+                        </div>
+                        <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
+                            <button class="buy-but">Купить сейчас<br>3 600 ₽</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    <footer>
+        <div class="footer-image">
+            <h2 class="footer-h2"> &#169; 2020-2021</h2>
+        </div>
+    </footer>
+
+</body>
+</html>

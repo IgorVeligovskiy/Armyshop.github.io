@@ -1,0 +1,472 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style-type: none;
+   }
+a{
+    text-decoration: none;
+}
+
+A {
+    color: #ffffff;
+}
+A:visited {
+    color: #ffffff;
+}
+
+header {
+	font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    color:white;
+}
+body{
+    width: 1440px;
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+}
+
+.container{
+    margin-left: 145px;
+    margin-right: 145px;
+	justify-content: center;
+    align-items: center;
+}
+
+.top{
+    background: url(../img/bg-top.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    height: 10%;
+    width: 100%;
+}
+.middle{
+    background: url(../img/bg-middle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 60%;
+    width: 100%;
+    text-align: center;
+}
+h1{
+    margin: 0 auto;
+    padding: 80px 0px 80px 0px;
+    font-size: 60px;
+    font-family: Helvetica, sans-serif;
+    text-shadow: 4px 4px 6px red;
+}
+h2{
+    margin: 0 auto;
+    padding: 10px 0px 10px 145px;
+    font-size: 28px;
+    color: white;
+    font-family: Helvetica, sans-serif;
+}
+.second-head{
+    margin-top: 0px;
+    justify-content: center;
+    background: url(../img/bg-bot.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 10%;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.nav-bot{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+}
+nav li{
+    margin: 24px 10px;
+}
+nav li:nth-child(2){
+    margin-left: auto;
+}
+
+.nav-link{
+    max-width: 200px;
+    padding: 10px;
+}
+.nav-item{
+    padding: 20px;
+    margin-right: auto;
+}
+
+.button{
+    background-color: #222020;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 40px;
+    height: 40px;
+    width: auto;
+    font-size: 20px;
+    border:none;
+    box-shadow: 0 2px 4px #2e2e2e;
+    color: white;
+}
+.button-2{
+    background-color: #DAD2D2;
+    margin-right: 105px;
+    border-radius: 20px;
+    height: 100%;
+    width: 230px;
+    justify-content: center;
+    color: black;
+}
+.button-2-text{
+    padding-left: 16px;
+}
+.but{
+    background-color: #FB9232;
+    margin-top: 18px;
+    border-radius: 20px;
+    height: 60px;
+    width: 230px;
+    border:none;
+    box-shadow: 0 2px 4px #2e2e2e;
+    color: white;
+}
+.input-class{
+    display: flex;
+    justify-content: space-between;
+    
+}
+input{
+    margin-top:10px;
+    width: 220px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    padding-left: 4px;
+    border: none;
+    color: #666565;
+    background: #DAD2D2;
+    box-shadow: 0 2px 4px #2e2e2e;
+}
+.search-svg{
+    position: absolute;
+    padding-left: 160px;
+    margin-top:16px;
+}
+
+/*ТЕКСТ КАРТИНКА*/
+.razdel-hits{
+    background: url(../img/hit.png);
+    background-repeat: no-repeat;
+}
+.razdel{
+    background: url(../img/razdel.png);
+    background-repeat: no-repeat;
+}
+.second-head{
+    margin-top: 0;
+    display: flex;
+}
+
+/*Кнопка покупки*/
+.basket{
+    background-color: #DAD2D2;
+    border-radius: 40px;
+    height: 40px;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+}
+.buy-but{
+    background-color: #FB9232;
+    border-radius: 40px;
+    height: 40px;
+    width: 124px;
+    border: none;
+    color:white;
+    position: absolute;
+    margin-top: -40px;
+}
+.plus{
+    position: absolute;
+    font-size: 36px;
+    font-weight: bold;
+    padding-left: 136px;
+}
+.vector{
+    position: absolute;
+    padding-right: 10px;
+    padding-left: 160px;
+    padding-top: 6px;
+}
+
+.about-us{
+    width: 1440px;
+    height:  1024px;
+    background: url(../img/BG.about-us.png);
+    background-repeat: no-repeat;
+}
+.about-us-text{
+    margin-top: 160px;
+    font-size: 36px;
+}
+
+/* best */
+.best-list{
+    display: flex;
+    align-items: flex-end;
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+/* Aks */
+.acc-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* hats */
+.hats-list{
+    display: flex;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* clothes */
+.clothes-list{
+    display: flex;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* food */
+.food-list{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* back */
+.back-list{
+    display: flex;
+    align-items: flex-end;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* footer */
+
+.footer-image{
+    background-color: #212722;
+    text-align: center;
+    position	: relative;
+    width		: 100%;
+    height: 70px;
+}
+.footer-h2{
+    padding: 26px 0px 10px 0px;
+    font-size: 20px;
+}
+
+
+@media (max-width: 1304px) {
+    .container-web-site{
+        width: 1287px;
+    }
+    header{
+        width: 1287px;
+    }
+    body{
+        width: 1287px;
+    }
+    footer{
+        width: 1287px;
+    }
+    .nav{
+        width: 1287px;
+    }
+    .about-us{
+        width: 1287px;
+    }
+    .container{
+        margin-left: 80px;
+        margin-right: 80px;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .container-web-site{
+        width: 1024px;
+    }
+    header{
+        width: 1024px;
+    }
+    body{
+        width: 1024px;
+    }
+    footer{
+        width: 1024px;
+    }
+    .nav{
+        width: 1024px;
+    }
+    .about-us{
+        width: 1024px;
+    }
+    .container{
+        margin-left: 60px;
+        margin-right: 60px;
+        justify-content: center;
+        align-items: center;
+    }
+    .best-list{
+        flex-wrap: wrap;
+    }
+    .hats-list{
+        flex-wrap: wrap;
+    }
+    .clothes-list{
+        flex-wrap: wrap;
+    }
+    .back-list{
+        flex-wrap: wrap;
+    }
+    .button{
+        width: auto;
+        height: 30px;
+        margin: 6px;
+        font-size: 16px;
+        padding-top: 4px;
+    }
+  }
+  
+
+  @media(min-width: 10px) and (max-width: 768px){
+    .container-web-site{
+        width: auto;
+    }
+    header{
+        width: auto;
+    }
+    body{
+        width: auto;
+    }
+    footer{
+        width: auto;
+    }
+    .nav{
+        width: 100%;
+        height: auto;
+        background-position: top;
+    }
+    .about-us{
+        width: auto;
+    }
+    .about-us-text{
+        font-size: 18px;
+    }
+    .container{
+        margin-left: 20px;
+        margin-right: 20px;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+    .nav-link{
+        display: none;
+    }
+    .question{
+        display: none;
+    }
+    .best-list{
+        flex-wrap: wrap;
+    }
+    .hats-list{
+        flex-wrap: wrap;
+    }
+    .clothes-list{
+        flex-wrap: wrap;
+    }
+    .back-list{
+        flex-wrap: wrap;
+    }
+
+    .nav{
+        background:none;
+    }
+    nav ul{
+        justify-content: center;
+        align-items: center;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }   
+    nav li:nth-child(2){
+        margin: 0px;
+    }
+    h1{
+        font-size: 40px;
+        padding: 40px 0px 40px 0px;
+    }
+    .button{
+        width: auto;
+        height: 20px;
+        margin: 0px;
+        font-size: 12px;
+    }
+    .button-2{
+        background-color: #DAD2D2;
+        margin-right: 10px;
+        border-radius: 20px;
+        width: 20%;
+        text-align: center;
+    }
+    .button-2-text{
+        font-size: 14px;
+        padding-left: 2px;
+    }
+    .but{
+        background-color: #FB9232;
+        border-radius: 20px;
+        height: auto;
+        width: 100%;
+        font-size: 12px;
+        text-align: center;
+    }
+    .text-but{
+        padding: 6px 6px 6px 6px;
+    }
+    input{
+        width: 100px;
+        height: 30px;
+        font-size: 10px;
+        margin: 0px;
+        border-radius: 4px;
+        padding-left:24px;
+    }
+    .razdel-hits{
+        text-align: center;
+    }
+    .razdel{
+        text-align: center;
+    }
+    h2{
+        padding: 10px 0px 10px 0px;
+    }
+    .search-svg{
+        padding-left: 2px;
+        margin-top: 6px;
+    }
+}
