@@ -140,27 +140,41 @@ nav li:nth-child(2){
     color: white;
 }
 .input-class{
-    display: flex;
-    justify-content: space-between;
-    
+    box-sizing: border-box;
 }
-input{
-    margin-top:10px;
+.search-form{
+    position: relative;
+    width: auto;
+    margin: 0 auto
+}
+input[type=search]{
+    font-size: 16px;
+    box-shadow: 0 2px 4px #2e2e2e;
     width: 220px;
     height: 30px;
-    font-size: 16px;
+    padding-left: 10px;
+    border: 2px solid #DAD2D2;
     border-radius: 10px;
-    padding-left: 4px;
-    border: none;
-    color: #666565;
+    outline: none;
     background: #DAD2D2;
-    box-shadow: 0 2px 4px #2e2e2e;
+    color: #9E9C9C;
 }
-.search-svg{
-    position: absolute;
-    padding-left: 160px;
-    margin-top:16px;
+button[type=submit]{
+    color: #666565;
+    position: absolute; 
+    top: 0;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #DAD2D2;
+    border-radius: 10px;
+    cursor: pointer;
 }
+button[type=submit]:before {
+    font-size: 16px;
+    color: #F9F0DA;
+  }
 
 /*ТЕКСТ КАРТИНКА*/
 .razdel-hits{
@@ -184,6 +198,7 @@ input{
     width: 200px;
     display: flex;
     justify-content: space-between;
+    border: none;
 }
 .buy-but{
     background-color: #FB9232;
@@ -384,23 +399,45 @@ input{
         align-items: center;
         width: auto;
     }
-    .nav-link{
+
+    .nav-about-us{
         display: none;
     }
     .question{
         display: none;
     }
     .best-list{
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
+    }
+    .acc-list{
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
     }
     .hats-list{
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
     }
     .clothes-list{
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
+    }
+    .food-list{
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
     }
     .back-list{
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        width: auto;
+    }
+    .nav-item{
+        position: relative;
     }
 
     .nav{
@@ -448,13 +485,13 @@ input{
     .text-but{
         padding: 6px 6px 6px 6px;
     }
-    input{
-        width: 100px;
+    input[type=search]{
+        width: 108px;
         height: 30px;
         font-size: 10px;
         margin: 0px;
         border-radius: 4px;
-        padding-left:24px;
+        padding-left:2px;
     }
     .razdel-hits{
         text-align: center;

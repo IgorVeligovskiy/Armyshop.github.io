@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Армейский магазин</title>
-    <script src="/js/main.js"></script>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" href="../Armyshop.github.io/img/favicon.svg" size="120x120" type="image/svg"/>
+    <script src="/js/main.js"></script>
+    <script src="/php/index.php"></script>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
                 <div class="container">
                     <ul class="nav-list">
                         <li>
-                            <a href="#tags_id" class="nav-link">О нас</a>
+                            <a href="#tags_id" class="nav-about-us">О нас</a>
                         </li>
                         <li>
                             <p class="question">Возникли вопросы? Напишите нам:</p>
@@ -52,14 +54,18 @@
                         <button class="button"><a href="#back_id">Рюкзаки</a></button>
                     </div>
                     <div class="button-2">
-                        <p class="button-2-text">Моя корзина:<div id="result"></div></p>
+                        <p class="button-2-text">Моя корзина:</p>
+                        <div id="result"></div>
                         <button class="but"><div class="text-but">Оплатить и указать адрес доставки</div> </button>
                     </div>
                     <div class="input-class">
-                        <form>
-                        <input type="search" placeholder="Поиск товара...">
-                        <input type="submit" value=" ">
-                        <img class="search-svg" src="img/search.svg" alt="Поиск">
+                        <form class="search-form">
+                        <input type="search" placeholder="Поиск товара..." maxlength="20">
+                        <button type="submit" >
+                            <span class="material-icons">
+                                search
+                            </span>
+                    </button>
                     </form>
                     </div>
                 </div>
@@ -70,15 +76,16 @@
             <h2 class="bestseller-h2">Хиты продаж</h2>
         </div>
             <div class="container">
-                <!-- <div id="swipezone" > -->
                 <ul class="best-list">
                     <li class="nav-item">
                         <img class="" src="img/1.jpg" alt="Термобелье DRY Warm до -35">
                         <p class="nav-link">Термобелье DRY Warm до -35</p>
-                        <div class="basket">
+                        <form>
+                        <button id="a" value="1800" class="basket" onclick="addition();">
                             <p class="plus">+</p>
-                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
-                        </div>
+                            <img class="vector" src="img/Vector.svg" alt="Корзина">
+                        </button>
+                        </form>
                             <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
                             <button class="buy-but">Купить сейчас<br>1 800 ₽</button>
                             </form>
@@ -86,10 +93,12 @@
                     <li class="nav-item">
                         <img class="" src="img/2.jpg" alt="Берцы облегченные">
                         <p class="nav-link">Берцы облегченные</p>
-                        <div class="basket">
+                        <form>
+                        <button id="b" value="4000" class="basket" onclick="addition();">
                             <p class="plus">+</p>
-                            <img class="vector" href="" src="img/Vector.svg" alt="Корзина">
-                        </div>
+                            <img class="vector" src="img/Vector.svg" alt="Корзина">
+                        </button>
+                        </form>
                             <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
                             <button class="buy-but">Купить сейчас<br>4 000 ₽</button>
                             </form>
@@ -128,7 +137,6 @@
                         </form>
                     </li>
                 </ul>
-            <!-- </div> -->
             </div>
         <!-- About-us -->
         <div class="about-us" id="tags_id">
