@@ -6,6 +6,19 @@ function addition() {
     if (isNaN(b)==true) b=0;
 
     var c = a + b;
+}
+function showModalWin() {
+ 
+    var darkLayer = document.createElement('div');
+    darkLayer.id = 'shadow';
+    document.body.appendChild(darkLayer);
 
-    document.getElementById('result').innerHTML = a + " + " + b + " = " + c;
+    var modalWin = document.getElementById('popupWin');
+    modalWin.style.display = 'block';
+
+    darkLayer.onclick = function () {
+        darkLayer.parentNode.removeChild(darkLayer);
+        modalWin.style.display = 'none';
+        return false;
+    };
 }

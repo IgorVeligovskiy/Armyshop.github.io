@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="img/favicon.png" size="64x64" type="image/png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="/js/main.js"></script>
-    <script src="/php/index.php"></script>
+    <script src="../Armyshop.github.io/js/main.js"></script>
+    <script src="../Armyshop.github.io/data.php"></script>
 </head>
 
 <body>
@@ -75,7 +75,6 @@
         <div class="razdel-hits">
             <h2 class="bestseller-h2">Хиты продаж</h2>
         </div>
-            <div class="container">
                 <ul class="best-list">
                     <li class="nav-item">
                         <img class="" src="img/1.jpg" alt="Термобелье DRY Warm до -35">
@@ -86,9 +85,22 @@
                             <img class="vector" src="img/Vector.svg" alt="Корзина">
                         </button>
                         </form>
-                            <form action="https://www.donationalerts.com/r/igor654321" target="_blank">
-                            <button class="buy-but">Купить сейчас<br>1 800 ₽</button>
-                            </form>
+
+                            <button class="buy-but" onclick="showModalWin()">Купить сейчас<br>1 800 ₽</button>
+                            <div style="text-align: center" id="popupWin" class="modalwin">
+                                <h2 class="center-text"> Пожалуйста заполните форму </h2>
+                                <div calss="frame">
+                                <form method="POST">
+                                    <input type="text" name="user" placeholder="Ваше имя">
+                                    <input type="tel" name="phone" placeholder="Номер телефона">
+                                    <input type="email" name="mail" placeholder="example@yourmail.com">
+                                    <input type="text" name="adress" placeholder="Адрес доставки">
+                                    <form action="data.php" method="POST">
+                                        <input type="submit" name="sub" value="Отправить и перейти к оплате">
+                                    </form>
+                                </form>
+                            </div>
+                            </div>
                     </li>
                     <li class="nav-item">
                         <img class="" src="img/2.jpg" alt="Берцы облегченные">
@@ -583,6 +595,9 @@
             <h2 class="footer-h2"> &#169; 2020-2021</h2>
         </div>
     </footer>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script> -->
+
 
 </body>
 </html>
