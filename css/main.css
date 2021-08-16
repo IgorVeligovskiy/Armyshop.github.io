@@ -493,7 +493,7 @@ textarea:focus {
     border: 1px solid #f7a253;
 }
 
-input[type=submit] {
+.sub {
     margin-top: 20px;
     background-color: #FB9232;
     border-radius: 40px;
@@ -504,7 +504,7 @@ input[type=submit] {
     white-space: normal;
 }
 
-input[type=submit]:focus {
+.sub:focus {
     margin-top: 20px;
     outline: none;
     background-color: #f7a253;
