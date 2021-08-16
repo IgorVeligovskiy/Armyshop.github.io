@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Армейский магазин</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="img/favicon.png" type="image/png"/>
+    <link rel="icon" href="img/favicon.png" type="image/png" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="js/main.js"></script>
 </head>
@@ -59,13 +60,56 @@
                     </div>
                     <div class="input-class">
                         <form class="search-form">
-                        <input type="search" placeholder="Поиск товара..." maxlength="20">
-                        <button type="submit" >
-                            <span class="material-icons">
+                            <!-- <input type="text" id="text-to-find" value="" placeholder="Поиск товара..." maxlength="20">
+                            <input type="button" onclick="javascript: FindOnPage('text-to-find'); return false;"> -->
+                            <input type="text" size="50" id="textToFind" />
+                            <input type="button" onclick="FindOnPage ('textToFind')" value="" placeholder="Поиск товара..." maxlength="20" /><br />
+                            <div class="overlay">
+                                <span class="material-icons search">
                                 search
                             </span>
-                    </button>
-                    </form>
+                            </div>
+                            <script>
+                                var copy_page;
+
+                                function FindOnPage(inputId) {
+                                    var obj = document.getElementById(inputId),
+                                        objValue = obj.value.replace(/^\s+/g, '').replace(/\s+$/g, '');
+
+                                    if (objValue == '') {
+                                        alert('Вы ничего не ввели');
+                                        return
+                                    }
+
+                                    if (document.location.href.indexOf('#') < 0) copy_page = document.body.innerHTML;
+                                    else document.body.innerHTML = copy_page;
+
+                                    var ttf = new RegExp(objValue.split('').join('-?'), 'g'),
+                                        db = document.body.innerHTML,
+                                        rz = db.match(ttf);
+                                    if (rz == null) {
+                                        alert('Ничего не найдено, проверьте правильность ввода!');
+                                        return
+                                    }
+                                    var rz1 = new Array();
+                                    rz1[0] = rz[0];
+                                    var rz_obr = new Array();
+                                    rz_obr[rz1[0]] = 1;
+                                    if (rz.length > 1)
+                                        for (var k = j = 1, lj = rz.length; j < lj; j++)
+                                            if (!rz_obr[rz[j]]) {
+                                                rz1[k++] = rz[j];
+                                                rz_obr[rz[j]] = 1
+                                            }
+
+                                    for (j = 0, lj = rz1.length; j < lj; j++) {
+                                        var z = (!j) ? (' id="' + objValue + '"') : '';
+                                        document.body.innerHTML = document.body.innerHTML.replace(new RegExp(rz1[j], 'g'), '<span style="background: red"' + z + '>' + rz1[j] + '</span>');
+                                    }
+                                    document.location.href = document.location.href.split('#')[0] + '#' + objValue;
+                                }
+                            </script>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -75,861 +119,865 @@
         <div class="razdel-hits">
             <h2 class="bestseller-h2">Хиты продаж</h2>
         </div>
-                <ul class="best-list">
-                    <li class="nav-item">
-                        <img src="img/1.jpg" alt="Термобелье DRY Warm. Обогрев тела до -35 градусов по цельсю. Цена: 1800 рублей"> <!--Изменить фото-->
-                        <p class="nav-link">Термобелье DRY Warm до -35</p>
-                        <form>
-                        <button id="a" value="1800" class="basket">
+        <ul class="best-list">
+            <li class="nav-item">
+                <img src="img/1.jpg" alt="Термобелье DRY Warm. Обогрев тела до -35 градусов по цельсю. Цена: 1800 рублей">
+                <!--Изменить фото-->
+                <p class="nav-link">Термобелье DRY Warm до -35</p>
+                <form>
+                    <button id="a" value="1800" class="basket">
                             <p class="plus">+</p>
                             <img class="vector" src="img/Vector.svg" alt="Корзина">
                         </button>
-                        </form>
-                            <button class="buy-but" onclick="showModalWin()">Заказать<br>1 800 ₽</button> <!--Изменить цену-->
-                            <div style="text-align: center" id="popupWin" class="modalwin">
-                            <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                            <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                <input type="submit" name="sub" value="Отправить">
-                                <input type="hidden" name="product" value="Термобелье DRY Warm до -35 1800 ₽">
-                            </form>
-                            </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2.jpg" alt="Берцы облегченные. Цена: 4000 рублей">
-                        <p class="nav-link">Берцы облегченные</p>
-                        <form>
-                        <button id="b" value="4000" class="basket">
+                </form>
+                <button class="buy-but" onclick="showModalWin()">Заказать<br>1 800 ₽</button>
+                <!--Изменить цену-->
+                <div style="text-align: center" id="popupWin" class="modalwin">
+                    <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                    <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                        <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                        <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                        <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                        <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                        <input type="submit" name="sub" value="Новый заказ">
+                        <input type="hidden" name="product" value="Термобелье DRY Warm до -35 1800 ₽">
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <img src="img/2.jpg" alt="Берцы облегченные. Цена: 4000 рублей">
+                <p class="nav-link">Берцы облегченные</p>
+                <form>
+                    <button id="b" value="4000" class="basket">
                             <p class="plus">+</p>
                             <img class="vector" src="img/Vector.svg" alt="Корзина">
                         </button>
+                </form>
+                <button class="buy-but" onclick="showModalWin2()">Заказать<br>4 000 ₽</button>
+                <div style="text-align: center" id="popupWin2" class="modalwin">
+                    <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                    <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                        <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                        <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                        <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                        <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                        <input type="submit" name="sub" value="Отправить">
+                        <input type="hidden" name="product" value="Берцы облегченные 4000 ₽">
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <img src="img/3.jpg" alt="Паёк Россгвардии. Цена: 550 рублей">
+                <p class="nav-link">Паек Россгвардии</p>
+                <div class="basket">
+                    <p class="plus">+</p>
+                    <img class="vector" src="img/Vector.svg" alt="Корзина">
+                </div>
+                <button class="buy-but" onclick="showModalWin3()">Заказать<br>550 ₽</button>
+                <div style="text-align: center" id="popupWin3" class="modalwin">
+                    <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                    <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                        <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                        <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                        <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                        <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                        <input type="submit" name="sub" value="Отправить">
+                        <input type="hidden" name="product" value="Паек Россгвардии 550 ₽">
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <img src="img/4.jpg" alt="Рюкзак комбо, 40 литров. Цена: 2900 рублей">
+                <p class="nav-link">Рюкзак комбо, 40 литров</p>
+                <div class="basket">
+                    <p class="plus">+</p>
+                    <img class="vector" src="img/Vector.svg" alt="Корзина">
+                </div>
+                <button class="buy-but" onclick="showModalWin4()">Заказать<br>2 900 ₽</button>
+                <div style="text-align: center" id="popupWin4" class="modalwin">
+                    <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                    <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                        <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                        <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                        <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                        <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                        <input type="submit" name="sub" value="Отправить">
+                        <input type="hidden" name="product" value="Рюкзак комбо, 40 литров 2 900 ₽">
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item">
+                <img src="img/5.jpg" alt="Тушенка Балтийская охота - Мясо Оленя. Цена: 220 рублей">
+                <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
+                <div class="basket">
+                    <p class="plus">+</p>
+                    <img class="vector" src="img/Vector.svg" alt="Корзина">
+                </div>
+                <button class="buy-but" onclick="showModalWin5()">Заказать<br>220 ₽</button>
+                <div style="text-align: center" id="popupWin5" class="modalwin">
+                    <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                    <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                        <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                        <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                        <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                        <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                        <input type="submit" name="sub" value="Отправить">
+                        <input type="hidden" name="product" value="Тушенка Балтийская охота 220 ₽">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- About-us -->
+    <div class="about-us" id="tags_id">
+        <div class="razdel">
+            <h2 class="about-us-h2">О нас</h2>
+        </div>
+        <div class="container">
+            <p class="about-us-text">Наш интернет-магазин специализируется на торговле армейской продукции хорошего качества и по доступной цене. Тысячи довольных клиентов на местности.<br> В наличии: продукты питания, одежда, различные аксессуары, а также продукция для дачи,
+                отдыха за городом, туризма. Продукты питания подходят для рыбаков, охотников, кто часто отправляется в командировки ,очень удобно взять с собой в дорогу, а также для тех, кто просто желает разнообразить свой рацион и обогатить организм
+                полезными элементами, всё натуральное или, как подарок на праздники родным, друзьям, знакомым. Всё очень вкусно и питательно😀 Отправляем в регионы России транспортными компаниями, почтой! Находимся в Нижневартовске! <br>Есть предложения
+                и готовы сотрудничать с оптовиками. Все контакты находятся в шапке сайта. Мы всегда открыты.</p>
+        </div>
+    </div>
+    <!-- aks -->
+    <div class="accessories" id="aks_id">
+        <div class="razdel">
+            <h2 class="accessories-h2">Аксессуары</h2>
+        </div>
+        <div class="container">
+            <ul class="acc-list">
+                <li class="nav-item">
+                    <img src="img/1a.jpg" alt="Ремень кожаный офицерский латунь. Цена: 800 рублей">
+                    <p class="nav-link">Ремень кожаный офицерский латунь</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin6()">Заказать<br>800 ₽</button>
+                    <div style="text-align: center" id="popupWin6" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Ремень кожаный офицерский латунь 800 ₽">
                         </form>
-                            <button class="buy-but" onclick="showModalWin2()">Заказать<br>4 000 ₽</button>
-                            <div style="text-align: center" id="popupWin2" class="modalwin">
-                            <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                            <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                <input type="submit" name="sub" value="Отправить">
-                                <input type="hidden" name="product" value="Берцы облегченные 4000 ₽">
-                            </form>
-                            </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3.jpg" alt="Паёк Россгвардии. Цена: 550 рублей">
-                        <p class="nav-link">Паек Россгвардии</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin3()">Заказать<br>550 ₽</button>
-                            <div style="text-align: center" id="popupWin3" class="modalwin">
-                            <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                            <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                <input type="submit" name="sub" value="Отправить">
-                                <input type="hidden" name="product" value="Паек Россгвардии 550 ₽">
-                            </form>
-                            </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4.jpg" alt="Рюкзак комбо, 40 литров. Цена: 2900 рублей">
-                        <p class="nav-link">Рюкзак комбо, 40 литров</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin4()">Заказать<br>2 900 ₽</button>
-                            <div style="text-align: center" id="popupWin4" class="modalwin">
-                            <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                            <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                <input type="submit" name="sub" value="Отправить">
-                                <input type="hidden" name="product" value="Рюкзак комбо, 40 литров 2 900 ₽">
-                            </form>
-                            </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/5.jpg" alt="Тушенка Балтийская охота - Мясо Оленя. Цена: 220 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin5()">Заказать<br>220 ₽</button>
-                            <div style="text-align: center" id="popupWin5" class="modalwin">
-                            <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                            <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                <input type="submit" name="sub" value="Отправить">
-                                <input type="hidden" name="product" value="Тушенка Балтийская охота 220 ₽">
-                            </form>
-                            </div>
-                    </li>
-                </ul>
-            </div>
-        <!-- About-us -->
-        <div class="about-us" id="tags_id">
-            <div class="razdel">
-                <h2 class="about-us-h2">О нас</h2>
-            </div>
-            <div class="container">
-                <p class="about-us-text" >Наш интернет-магазин специализируется на торговле армейской продукции хорошего качества и по доступной цене.
-    Тысячи довольных клиентов на местности.<br>
-    В наличии: продукты питания, одежда, различные аксессуары, а также продукция для дачи, отдыха за городом, туризма.
-    Продукты питания подходят для рыбаков, охотников, кто часто отправляется в командировки ,очень удобно взять с собой в дорогу, а также для тех, кто просто желает разнообразить свой рацион и обогатить организм полезными элементами, всё натуральное или, как подарок на праздники родным, друзьям, знакомым. Всё очень вкусно и питательно😀
-    Отправляем в регионы России транспортными компаниями, почтой! Находимся в Нижневартовске! <br>Есть предложения и готовы сотрудничать с оптовиками. 
-    Все контакты находятся в шапке сайта. Мы всегда открыты.</p>
-            </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/2a.jpg" alt="Армейская саперная лопата с чехлом. Цена: 650 рублей">
+                    <p class="nav-link">Армейская саперная лопата с чехлом</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin7()">Заказать<br>650 ₽</button>
+                    <div style="text-align: center" id="popupWin7" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Армейская саперная лопата с чехлом 650 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/3a.jpg" alt="Перчатки двойные вязаные. Цена: 450 рублей">
+                    <p class="nav-link">Перчатки двойные вязаные</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin8()">Заказать<br>450 ₽</button>
+                    <div style="text-align: center" id="popupWin8" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Перчатки двойные вязаные 450 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/4a.jpg" alt="Антисептик армейский ИПГП. Цена: 150 рублей">
+                    <p class="nav-link">Антисептик армейский ИПГП</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin9()">Заказать<br>150 ₽</button>
+                    <div style="text-align: center" id="popupWin9" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Антисептик армейский ИПГП 150 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/5a.jpg" alt="Газовая турбо зажигалка - Ак-47. Цена: 300 рублей">
+                    <p class="nav-link">Газовая турбо зажигалка "Ак-47"</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin10()">Заказать<br>300 ₽</button>
+                    <div style="text-align: center" id="popupWin10" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Газовая турбо зажигалка 300 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/6a.jpg" alt="Компас жидкостный, 4 см. Цена: 80 рублей">
+                    <p class="nav-link">Компас жидкостный, 4 см</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin11()">Заказать<br>80 ₽</button>
+                    <div style="text-align: center" id="popupWin11" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Компас жидкостный, 4 см 80 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/7a.jpg" alt="Компас алюминиевый. Цена: 80 рублей">
+                    <p class="nav-link">Компас алюминиевый</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin12()">Заказать<br>80 ₽</button>
+                    <div style="text-align: center" id="popupWin12" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Компас алюминиевый 80 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/8a.jpg" alt="Хозпакет. Цена: 120 рублей">
+                    <p class="nav-link">Хозпакет</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin13()">Заказать<br>120 ₽</button>
+                    <div style="text-align: center" id="popupWin13" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Хозпакет 120 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/9a.jpg" alt="Носки армейские зима/лето. Цена: 60 рублей">
+                    <p class="nav-link">Носки армейские зима/лето</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin14()">Заказать<br>60 ₽</button>
+                    <div style="text-align: center" id="popupWin14" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Носки армейские зима/лето 60 ₽">
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- aks -->
-        <div class="accessories" id="aks_id">
-            <div class="razdel">
-                <h2 class="accessories-h2">Аксессуары</h2>
-            </div>
-            <div class="container">
-                <ul class="acc-list">   
-                    <li class="nav-item">
-                        <img src="img/1a.jpg" alt="Ремень кожаный офицерский латунь. Цена: 800 рублей">
-                        <p class="nav-link">Ремень кожаный офицерский латунь</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin6()">Заказать<br>800 ₽</button>
-                            <div style="text-align: center" id="popupWin6" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Ремень кожаный офицерский латунь 800 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2a.jpg" alt="Армейская саперная лопата с чехлом. Цена: 650 рублей">
-                        <p class="nav-link">Армейская саперная лопата с чехлом</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin7()">Заказать<br>650 ₽</button>
-                            <div style="text-align: center" id="popupWin7" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Армейская саперная лопата с чехлом 650 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3a.jpg" alt="Перчатки двойные вязаные. Цена: 450 рублей">
-                        <p class="nav-link">Перчатки двойные вязаные</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin8()">Заказать<br>450 ₽</button>
-                            <div style="text-align: center" id="popupWin8" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Перчатки двойные вязаные 450 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4a.jpg" alt="Антисептик армейский ИПГП. Цена: 150 рублей">
-                        <p class="nav-link">Антисептик армейский ИПГП</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin9()">Заказать<br>150 ₽</button>
-                            <div style="text-align: center" id="popupWin9" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Антисептик армейский ИПГП 150 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/5a.jpg" alt="Газовая турбо зажигалка - Ак-47. Цена: 300 рублей">
-                        <p class="nav-link">Газовая турбо зажигалка "Ак-47"</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin10()">Заказать<br>300 ₽</button>
-                            <div style="text-align: center" id="popupWin10" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Газовая турбо зажигалка 300 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/6a.jpg" alt="Компас жидкостный, 4 см. Цена: 80 рублей">
-                        <p class="nav-link">Компас жидкостный, 4 см</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin11()">Заказать<br>80 ₽</button>
-                            <div style="text-align: center" id="popupWin11" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Компас жидкостный, 4 см 80 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/7a.jpg" alt="Компас алюминиевый. Цена: 80 рублей">
-                        <p class="nav-link">Компас алюминиевый</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin12()">Заказать<br>80 ₽</button>
-                            <div style="text-align: center" id="popupWin12" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Компас алюминиевый 80 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/8a.jpg" alt="Хозпакет. Цена: 120 рублей">
-                        <p class="nav-link">Хозпакет</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin13()">Заказать<br>120 ₽</button>
-                            <div style="text-align: center" id="popupWin13" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Хозпакет 120 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/9a.jpg" alt="Носки армейские зима/лето. Цена: 60 рублей">
-                        <p class="nav-link">Носки армейские зима/лето</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin14()">Заказать<br>60 ₽</button>
-                            <div style="text-align: center" id="popupWin14" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Носки армейские зима/лето 60 ₽">
-                                </form>
-                                </div>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <!-- hats -->
+    <div class="hats" id="hats_id">
+        <div class="razdel">
+            <h2 class="hats-h2">Головные уборы</h2>
         </div>
-        <!-- hats -->
-        <div class="hats" id="hats_id">
-            <div class="razdel">
-                <h2 class="hats-h2">Головные уборы</h2>
-            </div>
-            <div class="container">
-                <ul class="hats-list">
-                    <li class="nav-item">
-                        <img src="img/1b.jpg" alt="Шапка ФЛОРА на флисе одинарной вязки. Цена: 400 рублей">
-                        <p class="nav-link">Шапка ФЛОРА на флисе одинарной вязки</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin15()">Заказать<br>400 ₽</button>
-                            <div style="text-align: center" id="popupWin15" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Шапка ФЛОРА на флисе одинарной вязки 400 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2b.jpg" alt="Шапка-маска вязаная зимняя черная/олива. Цена: 650 рублей">
-                        <p class="nav-link">Шапка-маска вязаная зимняя черная/олива</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin16()">Заказать<br>650 ₽</button>
-                            <div style="text-align: center" id="popupWin16" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Шапка-маска вязаная зимняя черная/олива 650 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3b.jpg" alt="Шапка ЧЕРНАЯ на флисе одинарной вязки. Цена: 400 рублей">
-                        <p class="nav-link">Шапка ЧЕРНАЯ на флисе одинарной вязки</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin17()">Заказать<br>400 ₽</button>
-                            <div style="text-align: center" id="popupWin17" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Шапка ЧЕРНАЯ на флисе одинарной вязки 400 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4b.jpg" alt="Шапка ОЛИВА на флисе одинарной вязки. Цена: 400 рублей">
-                        <p class="nav-link">Шапка ОЛИВА на флисе одинарной вязки</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin18()">Заказать<br>400 ₽</button>
-                            <div style="text-align: center" id="popupWin18" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Шапка ОЛИВА на флисе одинарной вязки 400 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/5b.jpg" alt="Шапка ЦИФРА на флисе одинарной вязки. Цена: 400 рублей">
-                        <p class="nav-link">Шапка ЦИФРА на флисе одинарной вязки</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin19()">Заказать<br>400 ₽</button>
-                            <div style="text-align: center" id="popupWin19" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Шапка ЦИФРА на флисе одинарной вязки 400 ₽">
-                                </form>
-                                </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="container">
+            <ul class="hats-list">
+                <li class="nav-item">
+                    <img src="img/1b.jpg" alt="Шапка ФЛОРА на флисе одинарной вязки. Цена: 400 рублей">
+                    <p class="nav-link">Шапка ФЛОРА на флисе одинарной вязки</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin15()">Заказать<br>400 ₽</button>
+                    <div style="text-align: center" id="popupWin15" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Шапка ФЛОРА на флисе одинарной вязки 400 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/2b.jpg" alt="Шапка-маска вязаная зимняя черная/олива. Цена: 650 рублей">
+                    <p class="nav-link">Шапка-маска вязаная зимняя черная/олива</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin16()">Заказать<br>650 ₽</button>
+                    <div style="text-align: center" id="popupWin16" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Шапка-маска вязаная зимняя черная/олива 650 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/3b.jpg" alt="Шапка ЧЕРНАЯ на флисе одинарной вязки. Цена: 400 рублей">
+                    <p class="nav-link">Шапка ЧЕРНАЯ на флисе одинарной вязки</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin17()">Заказать<br>400 ₽</button>
+                    <div style="text-align: center" id="popupWin17" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Шапка ЧЕРНАЯ на флисе одинарной вязки 400 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/4b.jpg" alt="Шапка ОЛИВА на флисе одинарной вязки. Цена: 400 рублей">
+                    <p class="nav-link">Шапка ОЛИВА на флисе одинарной вязки</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin18()">Заказать<br>400 ₽</button>
+                    <div style="text-align: center" id="popupWin18" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Шапка ОЛИВА на флисе одинарной вязки 400 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/5b.jpg" alt="Шапка ЦИФРА на флисе одинарной вязки. Цена: 400 рублей">
+                    <p class="nav-link">Шапка ЦИФРА на флисе одинарной вязки</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin19()">Заказать<br>400 ₽</button>
+                    <div style="text-align: center" id="popupWin19" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Шапка ЦИФРА на флисе одинарной вязки 400 ₽">
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- clothes -->
-        <div class="clothes" id="clothes_id">
-            <div class="razdel">
-                <h2 class="clothes-h2">Одежда</h2>
-            </div>
-            <div class="container">
-                <ul class="clothes-list">
-                    <li class="nav-item">
-                        <img src="img/1c.jpg" alt="Термобелье DRY Warm. Обогрев тела до -35 градусов по цельсю. Цена: 1800 рублей">
-                        <p class="nav-link">Термобелье DRY Warm до -35</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin20()">Заказать<br>1 800 ₽</button>
-                            <div style="text-align: center" id="popupWin20" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Термобелье DRY Warm до -35 1 800 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2c.jpg" alt="Футболка с длинными рукавами - Армия России. Цена: 300 рублей">
-                        <p class="nav-link">Футболка с длинными рукавами Армия России</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin21()">Заказать<br>300 ₽</button>
-                            <div style="text-align: center" id="popupWin21" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Футболка с длинными рукавами Армия России 300 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3c.jpg" alt="Армейская парка ВКБО офисная. Цена: 3800 рублей">
-                        <p class="nav-link">Армейская парка ВКБО офисная</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin22()">Заказать<br>3 800 ₽</button>
-                            <div style="text-align: center" id="popupWin22" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Армейская парка ВКБО офисная 3 800 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4c.jpg" alt="Берцы облегченные. Цена: 4000 рублей">
-                        <p class="nav-link">Берцы облегченные</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin23()">Заказать<br>4 000 ₽</button>
-                            <div style="text-align: center" id="popupWin23" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Берцы облегченные 4 000 ₽">
-                                </form>
-                                </div>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <!-- clothes -->
+    <div class="clothes" id="clothes_id">
+        <div class="razdel">
+            <h2 class="clothes-h2">Одежда</h2>
         </div>
-        <!-- food -->
-        <div class="food" id="food_id">
-            <div class="razdel">
-                <h2 class="food-h2">Продукты питания</h2>
-            </div>
-            <div class="container">
-                <ul class="food-list">   
-                    <li class="nav-item">
-                        <img src="img/1f.jpg" alt="Паёк Россгвардии. Цена: 550 рублей">
-                        <p class="nav-link">Паек Россгвардии</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin24()">Заказать<br>550 ₽</button>
-                            <div style="text-align: center" id="popupWin24" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Паек Россгвардии 550 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2f.jpg" alt="Аварийный рацион питания. Цена: 170 рублей">
-                        <p class="nav-link">Аварийный рацион питания (АРП)</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin25()">Заказать<br>170 ₽</button>
-                            <div style="text-align: center" id="popupWin25" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Аварийный рацион питания (АРП) 170 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3f.jpg" alt="Паёк офицерский усиленный 2,1 кг. Цена: 450 рублей">
-                        <p class="nav-link">Паек офицерский усиленный 2,1 кг</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin26()">Заказать<br>450 ₽</button>
-                            <div style="text-align: center" id="popupWin26" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Паек офицерский усиленный 2,1 кг 450 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4f.jpg" alt="МЧС паек. Цена: 550 рублей">
-                        <p class="nav-link">МЧС паек</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin27()">Заказать<br>550 ₽</button>
-                            <div style="text-align: center" id="popupWin27" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="МЧС паек 550 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/5f.jpg" alt="Тушенка Балтийская охота - Мясо барана. Цена 200 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо барана</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin28()">Заказать<br>200 ₽</button>
-                            <div style="text-align: center" id="popupWin28" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо барана 200 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/6f.jpg" alt="Тушенка Балтийская охота - Мясо КАБАНА. Цена: 200 рублей">
-                        <p class="nav-link">Мясо КАБАНА "Балтийская охота"</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin29()">Заказать<br>200 ₽</button>
-                            <div style="text-align: center" id="popupWin29" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Мясо КАБАНА Балтийская охота 200 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/7f.jpg" alt="Тушенка Балтийская охота - Мясо косули. Цена: 230 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо косули</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin30()">Заказать<br>230 ₽</button>
-                            <div style="text-align: center" id="popupWin30" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо косули 230 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/8f.jpg" alt="Тушенка армейская - Не для продажи. Цена: 220 рублей">
-                        <p class="nav-link">Тушенка армейская "Не для продажи"</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin31()">Заказать<br>220 ₽</button>
-                            <div style="text-align: center" id="popupWin31" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка армейская Не для продажи 220 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/9f.jpg" alt="Тушенка Балтийская охота - Мясо Оленя. Цена: 220 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin32()">Заказать<br>220 ₽</button>
-                            <div style="text-align: center" id="popupWin32" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо Оленя 220 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/10f.jpg" alt="Мясо индейки. Цена: 200 рублей">
-                        <p class="nav-link">Мясо индейки</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin33()">Заказать<br>200 ₽</button>
-                            <div style="text-align: center" id="popupWin33" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Мясо индейки 200 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/11f.jpg" alt="Тушенка Балтийская охота - Мясо УТОК. Цена: 200 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо УТОК</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin34()">Заказать<br>200 ₽</button>
-                            <div style="text-align: center" id="popupWin34" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо УТОК 200 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/12f.jpg" alt="Тушенка Балтийская охота - Мясо ЛОСЯ. Цена: 230 рублей">
-                        <p class="nav-link">Тушенка "Балтийская охота" Мясо ЛОСЯ</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin35()">Заказать<br>230 ₽</button>
-                            <div style="text-align: center" id="popupWin35" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо ЛОСЯ 230 ₽">
-                                </form>
-                                </div>
-                    </li>
-                 </ul>
-            </div>
+        <div class="container">
+            <ul class="clothes-list">
+                <li class="nav-item">
+                    <img src="img/1c.jpg" alt="Термобелье DRY Warm. Обогрев тела до -35 градусов по цельсю. Цена: 1800 рублей">
+                    <p class="nav-link">Термобелье DRY Warm до -35</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin20()">Заказать<br>1 800 ₽</button>
+                    <div style="text-align: center" id="popupWin20" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Термобелье DRY Warm до -35 1 800 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/2c.jpg" alt="Футболка с длинными рукавами - Армия России. Цена: 300 рублей">
+                    <p class="nav-link">Футболка с длинными рукавами Армия России</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin21()">Заказать<br>300 ₽</button>
+                    <div style="text-align: center" id="popupWin21" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Футболка с длинными рукавами Армия России 300 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/3c.jpg" alt="Армейская парка ВКБО офисная. Цена: 3800 рублей">
+                    <p class="nav-link">Армейская парка ВКБО офисная</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin22()">Заказать<br>3 800 ₽</button>
+                    <div style="text-align: center" id="popupWin22" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Армейская парка ВКБО офисная 3 800 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/4c.jpg" alt="Берцы облегченные. Цена: 4000 рублей">
+                    <p class="nav-link">Берцы облегченные</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin23()">Заказать<br>4 000 ₽</button>
+                    <div style="text-align: center" id="popupWin23" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Берцы облегченные 4 000 ₽">
+                        </form>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- backpacks -->
-        <div class="backpacks" id="back_id">
-            <div class="razdel">
-                <h2 class="bestseller-h2">Рюкзаки</h2>
-            </div>
-            <div class="container">
-                <ul class="back-list">
-                    <li class="nav-item">
-                        <img src="img/1r.jpg" alt="Рюкзак комбо, 30 литров. Цена: 2100 рублей">
-                        <p class="nav-link">Рюкзак комбо, 30 литров</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin36()">Заказать<br>2 100 ₽</button>
-                            <div style="text-align: center" id="popupWin36" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Рюкзак комбо, 30 литров 2100 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/2r.jpg" alt="Рюкзак комбо, 40 литров. Цена: 2900 рублей">
-                        <p class="nav-link">Рюкзак комбо, 40 литров</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin37()">Заказать<br>2 900 ₽</button>
-                            <div style="text-align: center" id="popupWin37" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Рюкзак комбо, 40 литров 2900 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/3r.jpg" alt="ТАКТИЧЕСКИЙ РЮКЗАК ASSAULT S, 25 литров. Цена: 1600 рублей">
-                        <p class="nav-link">Тактический рюкзак ASSAULT "S", 25литров</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin38()">Заказать<br>1 600 ₽</button>
-                            <div style="text-align: center" id="popupWin38" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="ТАКТИЧЕСКИЙ РЮКЗАК ASSAULT S, 25 литров 1600 ₽">
-                                </form>
-                                </div>
-                    </li>
-                    <li class="nav-item">
-                        <img src="img/4r.jpg" alt="Рюкзак 85 литров. Цена: 3600 рублей">
-                        <p class="nav-link">Рюкзак 85 литров</p>
-                        <div class="basket">
-                            <p class="plus">+</p>
-                            <img class="vector" src="img/Vector.svg" alt="Корзина">
-                        </div>
-                            <button class="buy-but" onclick="showModalWin39()">Заказать<br>3 600 ₽</button>
-                            <div style="text-align: center" id="popupWin39" class="modalwin">
-                                <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
-                                <form action="https://formspree.io/f/xnqowvrl" method="POST">
-                                    <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
-                                    <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
-                                    <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
-                                    <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
-                                    <input type="submit" name="sub" value="Отправить">
-                                    <input type="hidden" name="product" value="Рюкзак 85 литров 3600 ₽">
-                                </form>
-                                </div>
-                    </li>
-                </ul>
-            </div>
+    </div>
+    <!-- food -->
+    <div class="food" id="food_id">
+        <div class="razdel">
+            <h2 class="food-h2">Продукты питания</h2>
         </div>
+        <div class="container">
+            <ul class="food-list">
+                <li class="nav-item">
+                    <img src="img/1f.jpg" alt="Паёк Россгвардии. Цена: 550 рублей">
+                    <p class="nav-link">Паек Россгвардии</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin24()">Заказать<br>550 ₽</button>
+                    <div style="text-align: center" id="popupWin24" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Паек Россгвардии 550 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/2f.jpg" alt="Аварийный рацион питания. Цена: 170 рублей">
+                    <p class="nav-link">Аварийный рацион питания (АРП)</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin25()">Заказать<br>170 ₽</button>
+                    <div style="text-align: center" id="popupWin25" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Аварийный рацион питания (АРП) 170 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/3f.jpg" alt="Паёк офицерский усиленный 2,1 кг. Цена: 450 рублей">
+                    <p class="nav-link">Паек офицерский усиленный 2,1 кг</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin26()">Заказать<br>450 ₽</button>
+                    <div style="text-align: center" id="popupWin26" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Паек офицерский усиленный 2,1 кг 450 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/4f.jpg" alt="МЧС паек. Цена: 550 рублей">
+                    <p class="nav-link">МЧС паек</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin27()">Заказать<br>550 ₽</button>
+                    <div style="text-align: center" id="popupWin27" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="МЧС паек 550 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/5f.jpg" alt="Тушенка Балтийская охота - Мясо барана. Цена 200 рублей">
+                    <p class="nav-link">Тушенка "Балтийская охота" Мясо барана</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin28()">Заказать<br>200 ₽</button>
+                    <div style="text-align: center" id="popupWin28" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо барана 200 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/6f.jpg" alt="Тушенка Балтийская охота - Мясо КАБАНА. Цена: 200 рублей">
+                    <p class="nav-link">Мясо КАБАНА "Балтийская охота"</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin29()">Заказать<br>200 ₽</button>
+                    <div style="text-align: center" id="popupWin29" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Мясо КАБАНА Балтийская охота 200 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/7f.jpg" alt="Тушенка Балтийская охота - Мясо косули. Цена: 230 рублей">
+                    <p class="nav-link">Тушенка "Балтийская охота" Мясо косули</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin30()">Заказать<br>230 ₽</button>
+                    <div style="text-align: center" id="popupWin30" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо косули 230 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/8f.jpg" alt="Тушенка армейская - Не для продажи. Цена: 220 рублей">
+                    <p class="nav-link">Тушенка армейская "Не для продажи"</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin31()">Заказать<br>220 ₽</button>
+                    <div style="text-align: center" id="popupWin31" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка армейская Не для продажи 220 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/9f.jpg" alt="Тушенка Балтийская охота - Мясо Оленя. Цена: 220 рублей">
+                    <p class="nav-link">Тушенка "Балтийская охота" Мясо Оленя</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin32()">Заказать<br>220 ₽</button>
+                    <div style="text-align: center" id="popupWin32" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо Оленя 220 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/10f.jpg" alt="Мясо индейки. Цена: 200 рублей">
+                    <p class="nav-link">Мясо индейки</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin33()">Заказать<br>200 ₽</button>
+                    <div style="text-align: center" id="popupWin33" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Мясо индейки 200 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/11f.jpg" alt="Тушенка Балтийская охота - Мясо УТОК. Цена: 200 рублей">
+                    <p class="nav-link">Тушенка "Балтийская охота" Мясо УТОК</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin34()">Заказать<br>200 ₽</button>
+                    <div style="text-align: center" id="popupWin34" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо УТОК 200 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/12f.jpg" alt="Тушенка Балтийская охота - Мясо ЛОСЯ. Цена: 230 рублей">
+                    <p class="nav-link">Тушенка "Балтийская охота" Мясо ЛОСЯ</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin35()">Заказать<br>230 ₽</button>
+                    <div style="text-align: center" id="popupWin35" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Тушенка Балтийская охота Мясо ЛОСЯ 230 ₽">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- backpacks -->
+    <div class="backpacks" id="back_id">
+        <div class="razdel">
+            <h2 class="bestseller-h2">Рюкзаки</h2>
+        </div>
+        <div class="container">
+            <ul class="back-list">
+                <li class="nav-item">
+                    <img src="img/1r.jpg" alt="Рюкзак комбо, 30 литров. Цена: 2100 рублей">
+                    <p class="nav-link">Рюкзак комбо, 30 литров</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin36()">Заказать<br>2 100 ₽</button>
+                    <div style="text-align: center" id="popupWin36" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Рюкзак комбо, 30 литров 2100 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/2r.jpg" alt="Рюкзак комбо, 40 литров. Цена: 2900 рублей">
+                    <p class="nav-link">Рюкзак комбо, 40 литров</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin37()">Заказать<br>2 900 ₽</button>
+                    <div style="text-align: center" id="popupWin37" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Рюкзак комбо, 40 литров 2900 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/3r.jpg" alt="ТАКТИЧЕСКИЙ РЮКЗАК ASSAULT S, 25 литров. Цена: 1600 рублей">
+                    <p class="nav-link">Тактический рюкзак ASSAULT "S", 25литров</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin38()">Заказать<br>1 600 ₽</button>
+                    <div style="text-align: center" id="popupWin38" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="ТАКТИЧЕСКИЙ РЮКЗАК ASSAULT S, 25 литров 1600 ₽">
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <img src="img/4r.jpg" alt="Рюкзак 85 литров. Цена: 3600 рублей">
+                    <p class="nav-link">Рюкзак 85 литров</p>
+                    <div class="basket">
+                        <p class="plus">+</p>
+                        <img class="vector" src="img/Vector.svg" alt="Корзина">
+                    </div>
+                    <button class="buy-but" onclick="showModalWin39()">Заказать<br>3 600 ₽</button>
+                    <div style="text-align: center" id="popupWin39" class="modalwin">
+                        <h3 class="center-text"> Пожалуйста заполните форму.<br>Мы свяжемся с вами. </h3>
+                        <form action="https://formspree.io/f/xnqowvrl" method="POST">
+                            <input type="text" name="user" placeholder="Ваше имя" maxlength="20">
+                            <input type="tel" name="phone" placeholder="89997776633" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" maxlength="11">
+                            <input type="email" name="mail" placeholder="example@yourmail.com" maxlength="40">
+                            <input type="text" name="adress" placeholder="Адрес доставки" maxlength="100">
+                            <input type="submit" name="sub" value="Отправить">
+                            <input type="hidden" name="product" value="Рюкзак 85 литров 3600 ₽">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-image">
             <h2 class="footer-h2"> &#169; 2020-2021</h2>
+            <div class="footer-div">
+                <p class="footer-text"> Создано при сотрудничестве с GMD: </p>
+                <img class="footer-img" href="#" src="img/profile.png" alt="Разработка сайта от компании GreatModernDesign.ru (GMD)">
+            </div>
         </div>
     </footer>
 </body>
